@@ -13,7 +13,7 @@ export const eventService = {
     };
 
     const id = await eventRepository.create(data);
-    return { id, ...data };
+    return { ...data, id };
   },
 
   getAllEvents: async () => {
