@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/server.ts",
-    "build": "tsc"
+    "build": "tsc",
     "test": "jest"
   },
   "repository": {
@@ -32,6 +32,9 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.1",
+    "joi": "^18.0.2"
   }
 }
