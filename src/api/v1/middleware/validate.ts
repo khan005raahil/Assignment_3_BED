@@ -4,6 +4,9 @@ import Joi from "joi";
 export const validateBody =
   (schema: Joi.ObjectSchema) =>
   (req: Request, res: Response, next: NextFunction) => {
+
+    console.log("Validating request body:");
+
     const { value, error } = schema.validate(req.body, {
       abortEarly: true,
       stripUnknown: true,
