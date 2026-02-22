@@ -3,45 +3,35 @@ import { Event } from "../models/eventModel";
 
 const COLLECTION = "events";
 
-type EventDoc = Omit<Event, "id">; 
-
 export const eventRepository = {
-  create: async (data: EventDoc): Promise<string> => {
+  create: async (data: Event) => {
     const docRef = await db.collection(COLLECTION).add(data);
     return docRef.id;
   },
 
-  getAll: async (): Promise<Event[]> => {
+  getAll: async () => {
     const snap = await db.collection(COLLECTION).get();
-
-    return snap.docs.map((d) => {
-      const data = d.data() as EventDoc; 
-      return { id: d.id, ...data };
-    });
+    return snap.docs.map((d) => ({ id: d.id, ...(d.data() as Event) }));
   },
 
-  getById: async (id: string): Promise<Event | null> => {
+  getById: async (id: string) => {
     const doc = await db.collection(COLLECTION).doc(id).get();
     if (!doc.exists) return null;
-
-    const data = doc.data() as EventDoc;
-    return { id: doc.id, ...data };
+    return { id: doc.id, ...(doc.data() as Event) };
   },
 
-  update: async (id: string, data: Partial<EventDoc>): Promise<boolean> => {
+  update: async (id: string, data: Partial<Event>) => {
     const ref = db.collection(COLLECTION).doc(id);
     const doc = await ref.get();
     if (!doc.exists) return false;
-
     await ref.update(data);
     return true;
   },
 
-  remove: async (id: string): Promise<boolean> => {
+  remove: async (id: string) => {
     const ref = db.collection(COLLECTION).doc(id);
     const doc = await ref.get();
     if (!doc.exists) return false;
-
     await ref.delete();
     return true;
   },
