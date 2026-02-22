@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import Joi from "joi";
-import { HTTP_STATUS } from "../../../Constant/httpStatus";
 
 export const validateBody =
   (schema: Joi.ObjectSchema) =>
@@ -8,11 +7,11 @@ export const validateBody =
     const { value, error } = schema.validate(req.body, {
       abortEarly: true,
       stripUnknown: true,
-      convert: true, // defaults apply
+      convert: true,
     });
 
     if (error) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json({ message: error.details[0].message });
+      return res.status(400).json({ message: error.details[0].message });
     }
 
     req.body = value;
@@ -29,7 +28,7 @@ export const validateParams =
     });
 
     if (error) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json({ message: error.details[0].message });
+      return res.status(400).json({ message: error.details[0].message });
     }
 
     req.params = value;
