@@ -19,7 +19,7 @@ jobs:
               run: npm ci
 
             - name: Generate documentation
-              run: npm run generate-docs
+              run: npm run docs:generate
 
             - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v3
