@@ -6,3 +6,4 @@ export const healthCheck = (req: Request, res: Response) => {
     const healthCheckResponse = healthService.healthCheck
     res.status(HTTP_STATUS.OK).json(healthCheckResponse);
 };
+
