@@ -2,3 +2,4 @@ serviceAccountKey.json
 .vscode
 /node_modules
 /dist
+/.env
