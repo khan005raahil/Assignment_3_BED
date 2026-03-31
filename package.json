@@ -7,7 +7,7 @@
     "start": "ts-node src/server.ts",
     "build": "tsc",
     "test": "jest",
-    "generate-docs": "node generateDocs.js"
+    "docs:generate": "ts-node scripts/generateDocs.ts"
   },
   "repository": {
     "type": "git",
