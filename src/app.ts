@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 
 import {getHelmetConfig} from "../config/helmetConfig";
 import {getCorsOptions} from "../config/corsConfig";
+import setupSwagger from '../config/swagger';
 dotenv.config();
 
 const app: Express = express();
@@ -18,4 +19,5 @@ app.use(morgan('combined'));
 app.use('/api/v1/health', healthRouter);
 app.use('/api/v1/events', eventRouter);
 
+setupSwagger(app);
 export default app;
