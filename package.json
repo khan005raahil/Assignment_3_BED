@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node src/server.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "generate-docs": "node generateDocs.js"
   },
   "repository": {
     "type": "git",
